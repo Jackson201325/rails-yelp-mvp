@@ -1,0 +1,21 @@
+<div class="container">
+  <h1 style="text-align: center" class="mt-3">All Restaurants</h1>
+  
+  <div class="row d-flex justify-content-around">
+    <% @restaurants.each do |restaurant| %>
+    <div class="card col-5 m-4">
+      <div class="card-body">
+        <h5 class="card-title"><%= restaurant.name.capitalize %></h5>
+        <h6 class="card-subtitle mb-2 text-muted"><%= restaurant.address%></h6>
+        <p>Reviews</p>
+        <ul>
+        <% restaurant.reviews.each do |item| %>
+          <li class="card-text"><%= item.content %></li>
+        <% end %>
+        </ul>
+        <%= link_to 'More Info', restaurant_path(restaurant), class:'card-link' %>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>

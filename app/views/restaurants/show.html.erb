@@ -1,0 +1,28 @@
+<div class="container mt-4">
+  <div class="card">
+    <h2 class="card-header"><%= @restaurant.name.capitalize %></h2>
+    <div class="card-body">
+      <h3 class="card-subtitle mt-2 mb-2"><%= @restaurant.address %></h3>
+      <h5 class="card-title mt-3 mb-3 text-muted"><%= @restaurant.phone_number %></h5>
+
+      <p class="card-text"><%= @restaurant.category.capitalize %></p>
+      <%= link_to 'Add review', new_restaurant_review_path(@restaurant) , class: 'btn btn-success' %>
+      <%= link_to 'Restaurants', restaurants_path , class: 'btn btn-primary' %>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <h2>Reviews</h2>
+  <div class="row d-flex justify-content-around ">
+    <% @restaurant.reviews.each do |item| %>
+      <div class="card flex-grow-1">
+        <div class="card-body">
+          <h5 class="card-title">Review</h5>
+          <p class="card-text"><%=  item.content %></p>
+          <h3 class="card-subtitle mt-2 mb-2">Rating: <%= item.rating %>/5</h3>
+        </div>
+      </div>
+    <% end %>
+  </div>  
+</div>
